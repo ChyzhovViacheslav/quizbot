@@ -1,6 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
-import { QuizService } from "./quiz.service";
-import { CreateQuizDto } from "./dto/createquix.dto";
+import { Controller, Get } from "@nestjs/common";
 import { TelegramService } from "./telegram.service";
 
 @Controller('quiz')
