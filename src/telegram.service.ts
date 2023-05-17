@@ -6,7 +6,7 @@ export class TelegramService {
     private bot: Telegraf;
 
     constructor() {
-        this.bot = new Telegraf('5882659861:AAGXWzsNBsTwXXhYOjvJszQVC3zFZhftjYY');
+        this.bot = new Telegraf('5882659861:AAGXWzsNBsTwXXhYOjvJszQVC3zFZhftjYY');  
         this.setupCommands();
         this.startPolling();
     }

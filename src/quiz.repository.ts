@@ -1,5 +1,6 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Quiz } from './quiz.entity';
 
-@EntityRepository(Quiz)
-export class QuizRepository extends Repository<Quiz> {}
+export class QuizRepository {
+    constructor(private readonly repository: Repository<Quiz>) {}
+}
