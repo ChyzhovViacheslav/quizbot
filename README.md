@@ -1,3 +1,5 @@
+Перед использованием бота нужно установить все зависимости и запустить сервер локально
+Сам бот - @quiz_telegraf_test_bot (https://t.me/quiz_telegraf_test_bot)
 ## Installation
 
 ```bash
