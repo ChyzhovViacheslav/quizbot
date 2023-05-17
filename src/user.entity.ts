@@ -8,7 +8,4 @@ export class User {
 
   @Column()
   username: string;
-
-  @OneToMany(() => Quiz, quiz => quiz.user)
-  quizzes: Quiz[];
 }

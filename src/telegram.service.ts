@@ -6,25 +6,31 @@ export class TelegramService {
     private bot: Telegraf;
 
     constructor() {
-        this.bot = new Telegraf('5882659861:AAGXWzsNBsTwXXhYOjvJszQVC3zFZhftjYY');  
-        this.setupCommands();
-        this.startPolling();
+        this.bot = new Telegraf('5882659861:AAGXWzsNBsTwXXhYOjvJszQVC3zFZhftjYY');
+        this.initializeBot()
     }
 
-    private setupCommands() {
-        this.bot.start((ctx) => {
-            const userId = ctx.from.id;
-            ctx.reply(`Hello ${userId}`)
-        });
-        this.bot.hears('Привет', (ctx) => {
-            const userId = ctx.from.id;
-            ctx.reply('Hi')
+    private initializeBot() {
+        this.bot.start((ctx) => ctx.reply('Привет, это мой бот!'));
+        
+        this.bot.command('start', (ctx) => {
+            const keyboard = {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{text: 'Start quiz', callback_data: 'click_btn'}]
+                    ]
+                }
+            }
+            ctx.reply('Click the button below to start the quiz', keyboard)
+        })
+        
+        this.bot.action('click_btn', (ctx) => {
+            ctx.reply(`Okay, let's start`)
         })
     }
 
-    private startPolling() {
-        this.bot.launch()
-            .then(() => console.log('Telegram bot started'))
-            .catch((err) => console.error('Error starting Telegram bot', err));
+    public async launchBot() {
+        await this.bot.launch()
+        console.log('Bot is started')
     }
 }

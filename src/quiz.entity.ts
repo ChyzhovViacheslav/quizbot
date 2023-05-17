@@ -6,11 +6,8 @@ export class Quiz{
     id: number;
 
     @Column()
-    questuion: string;
+    title: string;
 
-    @Column()
-    answer: string;
-
-    @Column()
-    user: string;
+    @Column('simple-array')
+    question: string[];
 }

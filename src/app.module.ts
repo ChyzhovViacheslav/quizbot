@@ -2,8 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { Quiz } from './quiz.entity';
-import { QuizRepository } from './quiz.repository';
-import { TelegramService } from './telegram.service';
+import { QuizModule } from './quiz.module';
 
 @Module({
   imports: [
@@ -17,8 +16,7 @@ import { TelegramService } from './telegram.service';
       entities: [User, Quiz],
       synchronize: true
     }),
-    TypeOrmModule.forFeature([Quiz, User, QuizRepository]),
+    QuizModule
   ],
-  providers: [TelegramService]
 })
 export class AppModule {}
